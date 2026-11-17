@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "report-performance-review",
+  "source": {
+    "repository": "https://github.com/anthropics/knowledge-work-plugins",
+    "path": "human-resources/skills/performance-review",
+    "commit": "1f517b9de47e827c80cd933ed364e16838072239",
+    "ref": "main",
+    "syncedAt": "2026-09-08T09:32:42.788Z"
+  },
+  "packageSha256": "3325656b0e489e6ffdb1d3b4cd59519d13d6e8372d229178104f7988fd089b60",
+  "files": {
+    "SKILL.md": {
+      "sha256": "a34e3f49e7c8619f07fd218cb2b6a6d57572dd7a0a78c72977dcd1739578e588",
+      "mode": "100644"
+    }
+  }
+}

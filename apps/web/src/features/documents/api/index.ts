@@ -1,0 +1,33 @@
+export {
+  DocumentArchiveImpactChangedError,
+  DocumentRevisionConflictError,
+  normalizeDocumentNode,
+  normalizeDocumentNodePreference,
+  normalizeDocumentRecord,
+  normalizeDocumentCollaborationTicket,
+  normalizeDocumentAsset,
+  normalizeDocumentComment,
+  normalizeDocumentCommentAnchor,
+  normalizeDocumentCommentThread,
+  normalizeDocumentSpace,
+  documentAssetContentPath,
+  pmDocumentsClient,
+  type ArchiveDocumentNodeInput,
+  type CopyDocumentNodeInput,
+  type CreateDocumentNodeInput,
+  type CreateDocumentShortcutInput,
+  type CreateDocumentCommentThreadInput,
+  type DocumentsClient,
+  type MoveDocumentNodeInput,
+  type ReplyDocumentCommentInput,
+  type UpdateDocumentInput,
+  type UpdateDocumentNodePreferenceInput,
+} from './client'
+export type {
+  DocumentCollaborationEvent,
+  DocumentCollaborationMember,
+  DocumentCollaborationSession,
+  DocumentCollaborationSessionFactory,
+  DocumentCollaborationTicket,
+} from './collaboration-port'
+export { productionDocumentCollaborationFactory } from './production-collaboration'

@@ -1,0 +1,1 @@
+export { QualityManagementPage } from './Pages'

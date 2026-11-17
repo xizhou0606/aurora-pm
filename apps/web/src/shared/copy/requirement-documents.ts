@@ -1,0 +1,15 @@
+export const REQUIREMENT_DOCUMENTS_COPY = {
+  title: '需求文档', empty: '尚未选择站内文档',
+  sourceType: '需求文档类型', chooseProjectScope: '请选择所属项目，关联后该项目集成员可只读访问。',
+  createLinkFailed: '需求已创建，文档关联未完成。请重试保存，不会重复创建需求。',
+  entryTitle: '需求录入', entryDescription: '选择飞书链接或站内文档作为需求来源；标题、说明和验收标准仍在详情页维护。',
+  feishu: '飞书', internal: '站内文档', save: '保存',
+  replaceFeishu: '保存关联后将替换原飞书链接。',
+  replaceInternal: '保存飞书链接后将解除当前站内文档关联及其项目集授权来源。',
+  legacyMultiple: '历史记录关联了多份文档，请先在站内文档中解除多余关联；不会自动删除已有授权来源。',
+  choose: '选择站内文档', noCandidates: '暂无可关联文档（需要文档权限管理权限）',
+  attach: '关联文档', detach: '解除关联', loading: '正在加载文档…', saving: '正在保存…',
+  failed: '文档关联操作失败，请刷新后重试。', loadFailed: '无法加载关联文档。', retry: '重新加载',
+  scope: (id: number, name?: string) => `关联后，项目集「${name || `#${id}`}」的当前及后续成员可只读访问；成员退出后自动失去此来源权限，不复制成员名单。`,
+  privateNotice: '此文档当前仅自己可见，提交关联后将改为指定主体可见；原有权限和分享链接不受影响。',
+} as const

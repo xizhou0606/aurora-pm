@@ -1,0 +1,5 @@
+# bun test discovers compiled copies of the tests in dist/ (tsc emits them
+# because tsconfig includes the test files). vitest excluded **/dist/** by
+# default; replicate that with the official bunfig option.
+[test]
+pathIgnorePatterns = ["**/dist/**"]

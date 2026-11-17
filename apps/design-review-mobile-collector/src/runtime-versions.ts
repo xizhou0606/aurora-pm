@@ -1,0 +1,5 @@
+export const COLLECTOR_VERSION = '0.1.0'
+export const MOBILEWRIGHT_VERSION = '0.0.53'
+export const MOBILECLI_VERSION = '1.0.0'
+export const NODE_VERSION = '24.14.0'
+export const ANDROID_PLATFORM_TOOLS_VERSION = '37.0.1'

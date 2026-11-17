@@ -1,0 +1,20 @@
+{
+  "source": {
+    "repositories": [
+      {
+        "name": "xizhou0606/pm",
+        "path": "apps/ai-runtime/skills/changelog-draft/SKILL.md",
+        "commit": "cb3a7182ab219722bd248d6739d9acb3438a4676",
+        "note": "本仓自研方法论:CHANGELOG.md 维护约定与 conventional commits 转写规则"
+      }
+    ],
+    "fetchedAt": "2026-09-09"
+  },
+  "files": {
+    "SKILL.md": {
+      "sha256": "b2c9cc0b8636a6c653cfb4542aaa530ee4599c4b9352bf32d9177669ceb942ca",
+      "mode": "100644"
+    }
+  },
+  "packageSha256": "51fa4bd8e14128b5a1c32dc431f8f4f396ba6f8b7d6df2ae8c4b24700173c1af"
+}

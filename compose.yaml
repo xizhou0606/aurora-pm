@@ -1,0 +1,19 @@
+name: aurora-pm-local
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: pm
+      POSTGRES_DB: pm_dev
+      POSTGRES_PASSWORD: ${PM_DEV_DB_PASSWORD:?Run sh scripts/dev.sh first}
+    ports:
+      - "127.0.0.1:55439:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "pm", "-d", "pm_dev"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+volumes:
+  postgres_data:

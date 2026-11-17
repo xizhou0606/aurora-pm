@@ -1,0 +1,139 @@
+/* DayPilot Lite owns this DOM. Every selector is audited in the architecture gate. */
+.work-items-daypilot .scheduler_default_main {
+  --dp-scheduler-border-color: var(--border);
+  --dp-scheduler-border-inner-color: var(--border);
+  --dp-scheduler-cell-bg-color: var(--card);
+  --dp-scheduler-cell-business-bg-color: var(--card);
+  --dp-scheduler-grid-line-color: var(--border);
+  --dp-scheduler-header-bg-color: var(--card);
+  --dp-scheduler-header-color: var(--muted-foreground);
+  --dp-scheduler-rowheader-padding: 0;
+  border: 0;
+  color: var(--foreground);
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.work-items-daypilot .scheduler_default_corner,
+.work-items-daypilot .scheduler_default_rowheader,
+.work-items-daypilot .scheduler_default_timeheadercol,
+.work-items-daypilot .scheduler_default_timeheadergroup {
+  background: var(--card);
+}
+
+.work-items-daypilot .scheduler_default_scrollable {
+  overscroll-behavior: contain;
+  scrollbar-color: color-mix(in oklab, var(--muted-foreground) 45%, transparent) transparent;
+  scrollbar-width: thin;
+}
+
+.work-items-daypilot .scheduler_default_rowheader_inner {
+  padding: 0;
+}
+
+.work-items-daypilot .scheduler_default_rowheader.work-items-daypilot-group {
+  background: color-mix(in oklab, var(--muted) 35%, var(--card));
+  cursor: pointer;
+}
+
+.work-items-daypilot-corner {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  height: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.work-items-daypilot-corner > span {
+  align-self: stretch;
+  border-inline-end: 1px solid var(--border);
+}
+
+.work-items-daypilot-group-header {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 4.25rem 0.75rem;
+  color: var(--foreground);
+}
+
+.work-items-daypilot-task-header {
+  display: grid;
+  min-width: 0;
+  height: 100%;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  align-items: center;
+}
+
+.work-items-daypilot-index {
+  display: grid;
+  align-self: stretch;
+  place-items: center;
+  border-inline-end: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.work-items-daypilot-description {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.625rem;
+  overflow: hidden;
+  padding-inline: 1rem;
+  white-space: nowrap;
+}
+
+.work-items-daypilot-description > strong {
+  flex: none;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+
+.work-items-daypilot-description > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.work-items-daypilot .scheduler_default_event.work-items-daypilot-event,
+.work-items-daypilot .work-items-daypilot-event .scheduler_default_event_inner {
+  /* DayPilot writes overflow inline; the title intentionally continues after the duration bar. */
+  overflow: visible !important;
+}
+
+.work-items-daypilot .work-items-daypilot-event .scheduler_default_event_inner {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.work-items-daypilot-event-content {
+  position: relative;
+  display: block;
+  flex: 1 0 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.work-items-daypilot-duration {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  border-radius: 0.5rem;
+  background: #b7efc5;
+  color: #fff;
+  font-size: 13px;
+}
+
+.work-items-daypilot-event-title {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: calc(100% + 0.5rem);
+  overflow: visible;
+  color: var(--muted-foreground);
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateY(-50%);
+}

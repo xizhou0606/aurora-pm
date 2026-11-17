@@ -1,0 +1,62 @@
+.DS_Store
+.env
+.env_goauth
+.pm-local.env
+/deploy.sh
+.pm-local/
+backend/.object-storage.env
+backend/.local-object-storage/
+*.db
+*.db-shm
+*.db-wal
+coverage/
+coverage.out
+migration-report*.json
+apps/web/node_modules/
+apps/web/dist/
+apps/ai-runtime/node_modules/
+apps/ai-runtime/dist/
+apps/collaboration/dist/
+node_modules/
+packages/*/node_modules/
+packages/*/dist/
+.pnpm-store/
+.playwright-mcp/
+.cache/design-review-mobile-collector/
+apps/web/playwright-report/
+apps/web/test-results/
+
+# E2E 运行产物（baseline 目录入库，actual/diff/report/trace 不入库）
+apps/web/e2e/traces/
+apps/web/e2e/visual/actual/
+apps/web/e2e/visual/diff/
+apps/web/e2e/visual/traces/
+apps/web/e2e/visual/report.html
+.local/
+deploy/k8s/production/production.env
+deploy/k8s/production/secrets.env
+deploy/k8s/production/image-lock.env
+deploy/k8s/production/rendered/
+__pycache__/
+
+# Local deploy backups
+pm_backup_*.sql
+
+# Local artifacts & build output
+.codex-artifacts/
+backend/pm-api
+
+# 使用规范文档的二进制产物（PDF/HTML/截图体积过大，仅跟踪 .md 源文件）
+docs/usage-spec/*
+!docs/usage-spec/*.md
+
+# 版本公告草稿(changelog:draft 产物,人工润色后并入 CHANGELOG.md)
+/CHANGELOG.draft.md
+apps/web/reg.json
+
+apps/*/dist/
+.env.*
+!.env.example
+
+# Optional third-party QA skill, supplied by the evaluator under upstream terms
+/apps/ai-runtime/skills/qa-test-case-design/

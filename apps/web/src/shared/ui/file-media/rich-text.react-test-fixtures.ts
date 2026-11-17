@@ -1,0 +1,52 @@
+import type { RichTextDocumentLabels } from './rich-text-types'
+
+export const RICH_TEXT_DOCUMENT_LABELS_FIXTURE: RichTextDocumentLabels = {
+  slashMenu: {
+    label: 'Insert block',
+    empty: 'No blocks',
+    commands: {
+      paragraph: { label: 'Paragraph' },
+      'heading-1': { label: 'Heading 1', keywords: ['title'] },
+      'heading-2': { label: 'Heading 2' },
+      'heading-3': { label: 'Heading 3' },
+      'bullet-list': { label: 'Bullet list' },
+      'ordered-list': { label: 'Ordered list' },
+      blockquote: { label: 'Quote' },
+      'code-block': { label: 'Code block' },
+      'task-list': { label: 'Task list' },
+      table: { label: 'Table' },
+      callout: { label: 'Callout' },
+      'table-of-contents': { label: 'Table of contents' },
+      bitable: { label: 'Bitable' },
+    },
+  },
+  bubbleMenu: {
+    label: 'Inline formatting',
+    bold: 'Bold',
+    italic: 'Italic',
+    strike: 'Strike',
+    code: 'Code',
+    comment: 'Comment',
+  },
+  blockMenu: {
+    label: 'Block actions',
+    copy: 'Copy block',
+    delete: 'Delete block',
+    moveUp: 'Move block up',
+    moveDown: 'Move block down',
+  },
+  tableMenu: {
+    label: 'Table actions',
+    addRowBefore: 'Add row before',
+    addRowAfter: 'Add row after',
+    addColumnBefore: 'Add column before',
+    addColumnAfter: 'Add column after',
+    deleteRow: 'Delete row',
+    deleteColumn: 'Delete column',
+    mergeOrSplit: 'Merge or split',
+    toggleHeaderRow: 'Toggle header row',
+    deleteTable: 'Delete table',
+  },
+  tableOfContents: { label: 'Table of contents', empty: 'No headings' },
+  unsupportedBlock: (type) => `Unsupported block: ${type}`,
+}

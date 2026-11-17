@@ -1,0 +1,27 @@
+{
+  "name": "@pm/design-review-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun x rsbuild build --config rsbuild.config.ts && bun scripts/build-extension.mjs",
+    "package": "bun x rsbuild build --config rsbuild.config.ts && bun scripts/build-extension.mjs && bun scripts/package-extension.mjs",
+    "typecheck": "bun node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "lucide-react": "1.0.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "2.2.7",
+    "@rsbuild/plugin-react": "2.1.0",
+    "@types/bun": "1.4.2",
+    "@types/chrome": "0.1.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,5 @@
+export { DocumentEditor, type DocumentEditorActor } from './DocumentEditor'
+export { DocumentTree } from './DocumentTree'
+export { DocumentsWorkspace } from './DocumentsWorkspace'
+export { DocumentAssetPanel } from './DocumentAssetPanel'
+export { DocumentCommentsPanel } from './DocumentCommentsPanel'

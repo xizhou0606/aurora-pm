@@ -1,0 +1,26 @@
+{
+  "source": {
+    "repositories": [
+      {
+        "name": "mattpocock/skills",
+        "path": "skills/engineering/code-review/SKILL.md",
+        "commit": "3cca18b368ae",
+        "note": "双轴审查法与 Fowler 坏味道基线"
+      },
+      {
+        "name": "coderabbitai/skills",
+        "path": "skills/code-review/SKILL.md",
+        "commit": "aa49953c4cb2",
+        "note": "严重度分级 critical/warning/info"
+      }
+    ],
+    "fetchedAt": "2026-09-08"
+  },
+  "files": {
+    "SKILL.md": {
+      "sha256": "f4492c1fea24db369b3b1d442f30d5c85f94daa0d1ca6a540a972be3bd521a62",
+      "mode": "100644"
+    }
+  },
+  "packageSha256": "c5d0399f38bc455ffeb8d3cd3346a520491bd1c10af0832e12ffcffdaf16a4a5"
+}

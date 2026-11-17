@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "PM 设计走查采集器",
+  "description": "为 PM 设计管理工作台采集网页视觉和受限结构证据。",
+  "version": "0.1.0",
+  "minimum_chrome_version": "120",
+  "permissions": ["activeTab", "tabs", "storage", "debugger"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_title": "PM 设计走查采集器", "default_popup": "popup.html" },
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["content.js"],
+    "all_frames": true,
+    "match_about_blank": true,
+    "run_at": "document_idle"
+  }]
+}

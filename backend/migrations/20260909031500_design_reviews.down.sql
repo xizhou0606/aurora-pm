@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS design_review_mobile_capture_drafts;
+DROP TABLE IF EXISTS design_review_mobile_pairing_codes;
+DROP TABLE IF EXISTS design_review_mobile_collectors;
+DROP TABLE IF EXISTS design_review_object_cleanup_jobs;
+DROP TABLE IF EXISTS design_review_deep_jobs;
+DROP TABLE IF EXISTS design_review_analysis_jobs;
+DROP TABLE IF EXISTS design_review_resolution_events;
+DROP TABLE IF EXISTS design_review_recheck_verifications;
+DROP TABLE IF EXISTS design_review_recheck_matches;
+DROP TABLE IF EXISTS design_review_lineage_events;
+DROP TABLE IF EXISTS design_review_differences;
+DROP TABLE IF EXISTS design_review_difference_lineages;
+DROP TABLE IF EXISTS design_review_assets;
+DROP TABLE IF EXISTS design_reviews;

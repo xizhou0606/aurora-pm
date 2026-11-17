@@ -1,0 +1,197 @@
+{
+  "jsPlugins": [
+    {
+      "name": "shadcn",
+      "specifier": "./shadcn-lint-plugin.mjs"
+    }
+  ],
+  "settings": {
+    "shadcn": {
+      "ui": "@/shared/ui"
+    }
+  },
+  "rules": {
+    "shadcn/no-arbitrary-values": [
+      "error",
+      {
+        "allow": [
+          "grid-cols-*",
+          "grid-rows-*",
+          "auto-cols-*",
+          "auto-rows-*",
+          "[grid-template-*",
+          "w-*",
+          "h-*",
+          "min-w-*",
+          "min-h-*",
+          "max-w-*",
+          "max-h-*",
+          "size-*",
+          "z-*",
+          "aspect-*",
+          "scale-*",
+          "origin-*",
+          "stroke-*",
+          "transition-*",
+          "animate-*",
+          "leading-*",
+          "tracking-*",
+          "content-*",
+          "shadow-[var(--design-*",
+          "*-[var(--*",
+          "*-[calc(*",
+          "*-[min(*",
+          "*-[max(*",
+          "*-[clamp(*",
+          "*-[color-mix(*",
+          "*-[attr(*",
+          "*-[repeat(*",
+          "*-[minmax(*",
+          "*-[theme(*",
+          "[overflow-wrap:*]",
+          "text-[0.8rem]",
+          "text-[0.9em]",
+          "text-[18px]",
+          "text-[2rem]",
+          "text-[2.25rem]",
+          "sm:text-[2.25rem]",
+          "border-t-[3px]",
+          "rounded-[min(var(--radius-md,*",
+          "text-[22px]",
+          "text-[30px]",
+          "text-[9px]"
+        ]
+      }
+    ],
+    "shadcn/no-raw-colors": [
+      "error",
+      {
+        "allow": [
+          "*-slate-*",
+          "*-gray-*",
+          "*-zinc-*",
+          "*-neutral-*",
+          "*-stone-*",
+          "*-red-*",
+          "*-orange-*",
+          "*-amber-*",
+          "*-yellow-*",
+          "*-lime-*",
+          "*-green-*",
+          "*-emerald-*",
+          "*-teal-*",
+          "*-cyan-*",
+          "*-sky-*",
+          "*-blue-*",
+          "*-indigo-*",
+          "*-violet-*",
+          "*-purple-*",
+          "*-fuchsia-*",
+          "*-pink-*",
+          "*-rose-*",
+          "*-white",
+          "*-black",
+          "*-transparent",
+          "*-current",
+          "*-inherit"
+        ]
+      }
+    ],
+    "shadcn/no-unknown-classes": [
+      "error",
+      {
+        "allow": [
+          "landing-*",
+          "pm-*",
+          "is-*",
+          "work-items-*"
+        ]
+      }
+    ],
+    "shadcn/require-static-classes": [
+      "error",
+      {
+        "variantFunctions": [
+          "buttonVariants"
+        ]
+      }
+    ],
+    "shadcn/no-inline-styles": "error",
+    "shadcn/no-restyle": [
+      "error",
+      {
+        "allow": [
+          "*"
+        ],
+        "contracts": [
+          {
+            "pattern": "^Button$",
+            "allow": [
+              "*"
+            ],
+            "deny": [
+              "*-slate-*",
+              "*-gray-*",
+              "*-zinc-*",
+              "*-neutral-*",
+              "*-stone-*",
+              "*-red-*",
+              "*-orange-*",
+              "*-amber-*",
+              "*-yellow-*",
+              "*-lime-*",
+              "*-green-*",
+              "*-emerald-*",
+              "*-teal-*",
+              "*-cyan-*",
+              "*-sky-*",
+              "*-blue-*",
+              "*-indigo-*",
+              "*-violet-*",
+              "*-purple-*",
+              "*-fuchsia-*",
+              "*-pink-*",
+              "*-rose-*"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/shared/ui/**"
+      ],
+      "rules": {
+        "shadcn/no-restyle": "off"
+      }
+    },
+    {
+      "files": [
+        "src/**/*.react-test.tsx"
+      ],
+      "rules": {
+        "shadcn/no-unknown-classes": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/ui/misc/login-provider-icons.tsx",
+        "src/shared/ui/brand/brand-mark.tsx",
+        "src/shared/ui/feedback/ai-loading.tsx"
+      ],
+      "rules": {
+        "shadcn/no-raw-colors": "off"
+      }
+    }
+  ],
+  "categories": {
+    "correctness": "off",
+    "style": "off",
+    "suspicious": "off",
+    "pedantic": "off",
+    "perf": "off",
+    "restriction": "off"
+  }
+}

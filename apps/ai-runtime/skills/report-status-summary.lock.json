@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "report-status-summary",
+  "source": {
+    "repository": "https://github.com/anthropics/knowledge-work-plugins",
+    "path": "operations/skills/status-report",
+    "commit": "1f517b9de47e827c80cd933ed364e16838072239",
+    "ref": "main",
+    "syncedAt": "2026-09-08T09:32:41.737Z"
+  },
+  "packageSha256": "c1d9593c52e4d94b544f360ddde9a6285f85550bdade7ef2b242c35bec2a0a35",
+  "files": {
+    "SKILL.md": {
+      "sha256": "8c3a21075294a5c5b7a1a7930613e53f0afbdbc12cf9e05d4bd08e6950c0a0d9",
+      "mode": "100644"
+    }
+  }
+}

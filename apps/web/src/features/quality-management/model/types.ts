@@ -1,0 +1,8 @@
+export type * from './types-route'
+export type * from './types-capability'
+export type * from './types-entity'
+export type * from './types-list'
+export type * from './types-detail'
+export type * from './types-form'
+export type * from './types-mutation'
+export type * from './types-dashboard'

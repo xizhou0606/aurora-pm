@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "name": "qa-test-case-design",
+  "source": {
+    "repository": "https://github.com/QA19816-glitch/QA-agent",
+    "path": "codex-skills/skills/qa-test-case-design",
+    "commit": "d75606531f6ce414bbcd95fb203033ae86653852",
+    "ref": "main",
+    "syncedAt": "2026-08-12T12:57:51.401Z"
+  },
+  "packageSha256": "07e9002dfe456988164f237f4cc33acce1a203564d1c778e94b3fe2bbc43e935",
+  "files": {
+    "SKILL.md": {
+      "sha256": "f79537134caed54b8e165b37d32ebfc9984bb3fa4fb73bd9852cd6d6767478e6",
+      "mode": "100644"
+    },
+    "agents/openai.yaml": {
+      "sha256": "1fa3b5e903339b49cb1a6204c600fb83b92b8a3749c31532eb8582e4b0a3f354",
+      "mode": "100644"
+    },
+    "output-templates/feishu-test-cases.md": {
+      "sha256": "0890b5f9066a7868aed66eb5f8d79dba665334334cf2017469bd5ae4eb85994d",
+      "mode": "100644"
+    },
+    "output-templates/structured-test-cases.md": {
+      "sha256": "f214aa7c8f5870074a946e390eb7d34abf009924e7e091205ad3946c0f28dac4",
+      "mode": "100644"
+    },
+    "prompts/advanced-test-case-design.md": {
+      "sha256": "ee893a0e9236b81ac55f8d3dbdf644b9ca48628c524ba93fdcc79162ac031708",
+      "mode": "100644"
+    },
+    "references/case-writing-rules.md": {
+      "sha256": "e855208943f66f000127777f71dd4c51ddea3af631ab5d51532ed2c93aec3cdd",
+      "mode": "100644"
+    },
+    "scripts/validate_testcases.py": {
+      "sha256": "7ad24d17518a175dbe4556a18888c5ba3baa05109b557621a9de34f3deefdab1",
+      "mode": "100755"
+    }
+  }
+}

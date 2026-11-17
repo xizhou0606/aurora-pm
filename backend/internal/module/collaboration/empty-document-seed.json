@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "snapshot": "AQH4rNjeCgAHAQdkZWZhdWx0AwlwYXJhZ3JhcGgA",
+  "snapshot_hash": "9fa7740ce05142e4724be061ea84a18a2ac3d122c091f97710d2ce5c67acef9f",
+  "state_vector": "Afis2N4KAQ==",
+  "state_vector_hash": "228acb1b287cfc11b518952339bed44114a8fce95bc918ab2556d3eb4b0a6f1a",
+  "projection": {"type":"doc","content":[{"type":"paragraph"}]},
+  "projection_hash": "af3eb6738adbda042982affc7bd51a9bb9b85fb726c026816142a8034b55b591"
+}

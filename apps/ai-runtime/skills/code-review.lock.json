@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "code-review",
+  "source": {
+    "repository": "https://github.com/anthropics/knowledge-work-plugins",
+    "path": "engineering/skills/code-review",
+    "commit": "1f517b9de47e827c80cd933ed364e16838072239",
+    "ref": "main",
+    "syncedAt": "2026-09-08T09:32:43.919Z"
+  },
+  "packageSha256": "1d8da6dec45479ecf13d7113f67508934f76905e4e2651f46d21c571ad22f700",
+  "files": {
+    "SKILL.md": {
+      "sha256": "6303932f1b301c614a6f5a0099cd87a19e1cd1b7cbfa1a1e11e996edbca6426b",
+      "mode": "100644"
+    }
+  }
+}

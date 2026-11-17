@@ -1,0 +1,5 @@
+DROP TABLE personal_document_resource_entries;
+DROP TABLE personal_document_entries;
+DROP TABLE personal_document_spaces;
+DROP INDEX idx_document_nodes_directory_owner;
+ALTER TABLE document_nodes DROP COLUMN directory_owner_user_id;

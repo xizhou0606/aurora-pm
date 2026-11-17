@@ -1,0 +1,276 @@
+export const zhCNMcpCli = {
+  title: 'MCP / CLI',
+  fieldSeparator: '：',
+  mcp: {
+    title: 'MCP 配置',
+    description: '将配置复制到支持 Streamable HTTP 的 MCP 客户端。',
+    clientLabel: 'Agent 客户端',
+    clients: {
+      codex: 'Codex',
+      claude_code: 'Claude Code',
+      goose: 'Goose',
+      opencode: 'OpenCode',
+      generic: '通用 MCP',
+    },
+    configurationLabel: 'PM MCP 客户端配置',
+    usageHint: '授权必须由 MCP 客户端连接发起；打开客户端提供的授权链接，确认后页面会跳回客户端的本地回调地址。',
+  },
+  cli: {
+    title: 'CLI 配置',
+    recommended: '推荐',
+    description: 'CLI 采用 Skill + Auth + Tool 形式，直接调用 Tool Runtime API，不经过 MCP。',
+    install: '安装 CLI',
+    skills: '安装全局 Skills',
+    setup: '初始化、登录并验证授权',
+    discover: '查看可用工具',
+    verify: '验证配置',
+    usageHint: '运行页面生成的 pm setup 命令，并打开 CLI 输出的 authorizationUrl；确认后页面会跳回 CLI 的本地回调地址。无需手工填写服务地址或工作区 ID。',
+  },
+  configurationActions: {
+    copy: '复制配置',
+    copyCommandShort: '复制',
+    copyCommand: (label: string) => `复制“${label}”命令`,
+    commandCopied: '已复制',
+    prompt: 'Prompt 配置',
+    copied: '配置已复制',
+    promptCopied: 'Agent Prompt 已复制',
+    copyFailed: '复制失败，请重试。',
+  },
+  agentPrompt: {
+    mcp: (configuration: string, connectivityTool: string) => `请在当前开发环境中完成 PM MCP 配置，并直接执行可安全自动完成的步骤。
+
+执行要求：
+1. 先识别当前 Agent 或客户端实际使用的 MCP 配置文件及配置格式。
+2. 保留所有现有 MCP Server 和其他设置，将下方配置中的 pm Server 合并进去；不要整文件覆盖。
+3. 不要在日志、回复或文件中新增明文 Token、密码或其他凭证，也不要自行编造凭证。
+4. 配置后执行必要的客户端重载，通过 tools/list 确认当前 Grant 包含只读 Tool \`${connectivityTool}\`。
+5. 若 PM 返回 \`MCP_AUTHORIZATION_REQUIRED\` 和 \`authorization_url\`，请把该 URL 作为可点击链接提供给用户并暂停；不要自行打开、代替用户确认授权，也不要复用其他用户或旧申请的 request_id。用户明确完成授权后，再重试连接。
+6. 使用空对象 \`{}\` 调用 \`${connectivityTool}\`。只有调用成功且返回结果包含 \`items\` 数组和非负整数 \`total\`，才可以判定 MCP 配置、身份、工作区与 Grant 已成功连通；不要调用任何写操作 Tool。
+7. 最后汇报修改的文件路径、合并结果、Tool 返回值和验证结论。若需要交互登录、用户授权、找不到该 Tool 或无法确定目标配置文件，请暂停并明确告诉我需要完成什么，不要宣称配置成功。
+
+要合并的 PM MCP 配置：
+\`\`\`json
+${configuration}
+\`\`\``,
+    cli: (configuration: string) => `请在当前开发环境中完成 PM CLI 初始化和用户鉴权。确认当前登录用户后立即停止，不要调用业务 Tool。
+
+执行要求：
+1. 按顺序执行下方命令；CLI 必须直接调用 PM Tool Runtime，不要改成通过 MCP 调用。
+2. \`pm setup --from\` 已携带当前 PM 部署与工作区；不要再要求我提供 serverUrl 或 workspaceId，也不要从历史配置猜测。若返回 \`PM_SETUP_REQUIRED\`，让我从 PM Web 的 MCP/CLI 页面重新复制完整 Setup 命令。
+3. Setup 使用设备授权模式。如果输出 authorizationUrl，请将该链接提供给我并暂停；授权确认会留在 PM Web，不会回跳 Agent 的 127.0.0.1。等待我完成后再执行后续鉴权；不要尝试读取、记录或输出 Token、密码及其他凭证。
+4. 最后静默执行 \`pm auth ensure --json\`。它会远端校验当前 Grant 并调用 \`user.me\`；只有返回 \`ready: true\`、\`data.user\` 存在且 \`toolCount\` 为非负整数时，才算鉴权成功。必须把 \`data.user\` 作为内部权威身份，不要通过用户搜索、项目权限或历史 reporter ID 推断自己。
+5. 鉴权成功后仅输出以下两行，并立即停止；不要展示 \`auth ensure\` 命令、认证过程、Grant、Tool Catalog 或其他状态。不要执行 \`pm tool list\`、\`pm tool call\` 或任何写操作；只有认证过期、未登录、需要用户授权、配置缺失或权限不足时，才说明必要的恢复动作。
+   - \`当前用户：<displayName> (@<username>, ID <id>)\`
+   - \`当前工作区：<workspaceId>\`
+
+要执行的 PM CLI 命令：
+\`\`\`sh
+${configuration}
+\`\`\``,
+  },
+  effectiveAccess: {
+    title: '当前 Tools 规则',
+    description: '查看当前账号在此工作区实际生效的规则与可用 Tools。',
+    currentRule: '当前规则',
+    toolCount: (count: number) => `当前可用 ${count} 个 Tools`,
+    ruleTitle: '当前生效规则',
+    ruleDescription: '此规则由 PM 管理员统一配置；当前账号仅查看实际生效结果。',
+    toolsTitle: '当前可用 Tools',
+    toolsDescription: '仅展示当前账号有效授权与工作区规则共同允许使用的 Tools。',
+    loading: '正在加载当前账号的 Tools 规则',
+    loadFailedTitle: '当前 Tools 规则暂不可用',
+    loadFailedDescription: '无法读取当前账号的有效规则与 Tool 范围，请稍后重试。',
+    status: {
+      unconfigured: '尚未配置',
+      disabled: '已禁用',
+      scheduled: '等待生效',
+      active: '生效中',
+      expired: '已过期',
+    },
+    statusDescription: {
+      unconfigured: '管理员尚未配置工作区 Tools 规则，当前账号没有可用 Tool。',
+      disabled: '工作区已停用外部 Tools，当前账号无法通过 MCP 或 CLI 调用。',
+      scheduled: '规则将在设定的 UAT 时间开始后生效，当前暂不可调用。',
+      active: '规则当前有效；下方只展示此账号现在可以调用的 Tools。',
+      expired: 'UAT 时间窗已结束，当前账号需要等待管理员更新规则并重新授权。',
+    },
+  },
+  tools: {
+    title: 'Tools 配置',
+    description: '配置客户端可用 Tools 及其生效规则。',
+    effectiveRule: '当前生效规则',
+    effectiveToolCount: (enabled: number, total: number) => `已启用 ${enabled} / 共 ${total} 个 Tools`,
+    rule: {
+      label: '生效规则',
+      permanent: '永久有效',
+      permanentDescription: '保存后持续生效，直到再次修改或禁用。',
+      disabled: '禁用',
+      disabledDescription: '停止向 MCP / CLI 提供当前配置的 Tools。',
+      window: '设置时间范围',
+      windowDescription: '仅在指定的 UAT 时间窗内生效。',
+    },
+    loading: '正在加载 Tool Catalog',
+    loadFailedTitle: '工具目录暂不可用',
+    loadFailedDescription: 'Tool Runtime API 尚未就绪或当前无法访问。页面不会把占位数据当作可用工具。',
+    emptyTitle: '暂无工具定义',
+    emptyDescription: '当前 PM Catalog 还没有登记任何 Tool。',
+    effectiveEmptyTitle: '当前账号暂无可用 Tools',
+    effectiveEmptyDescription: '完成 MCP / CLI 授权后，此处会展示当前规则允许该账号使用的 Tools。',
+    retry: '重新加载工具',
+    selectionTitle: '可用 Tools',
+    selectionDescription: '完整展示 PM Tool Catalog；尚未实现的 Tool 保留可见但不可启用。',
+    riskTabs: {
+      label: '按风险分类查看 Tools',
+      regular: '常规 Tools',
+      highRisk: '高危 Tools',
+      regularCount: (count: number) => `常规 Tools (${count})`,
+      highRiskCount: (count: number) => `高危 Tools (${count})`,
+      count: (enabled: number, total: number) => `${enabled}/${total} 已启用`,
+      availableCount: (count: number) => `${count} 个可用`,
+      highRiskDescription: '此处包含写操作和高风险写操作；实际调用仍需通过授权、写入确认与运行时门禁。',
+    },
+    treeLabel: '按域分组的全部 Tools',
+    effectiveTreeLabel: '按域分组的当前可用 Tools',
+    expandAll: '全部展开',
+    collapseAll: '全部折叠',
+    expandGroup: (name: string) => `展开 ${name} Tools`,
+    collapseGroup: (name: string) => `收起 ${name} Tools`,
+    enableGroup: (name: string) => `启用 ${name} 下的全部 Tools`,
+    disableGroup: (name: string) => `停用 ${name} 下的全部 Tools`,
+    groupCount: (total: number, configurable: number, selected: number) => `${selected}/${configurable} 已启用 · 共 ${total}`,
+    availableGroupCount: (total: number) => `${total} 个可用`,
+    selectedCount: (count: number) => `已启用 ${count} 个`,
+    save: '保存配置',
+    saveStatus: {
+      idle: '当前表单与 PM 服务端配置一致。',
+      dirty: '配置尚未保存；保存后才会影响 MCP / CLI 的授权与调用。',
+      saving: '正在保存到 PM 服务端…',
+      saved: '配置已在 PM 服务端生效。',
+      error: '服务端保存失败，当前变更仍未生效，请重试。',
+    },
+    selectTool: (name: string) => `允许工具：${name}`,
+    scope: (scope: string) => `授权范围：${scope}`,
+    version: (version: string) => `版本 ${version}`,
+    unavailable: '尚未实现，暂不可启用',
+  },
+  grants: {
+    clientChannel: (client: string, channel: string) => `${client} · ${channel}`,
+    title: '授权记录',
+    description: '查看授权申请及其凭证状态，废除授权后该次凭证立即失效。',
+    code: '设备确认码',
+    user: '授权用户',
+    tools: 'GrantTools',
+    time: '申请时间',
+    status: '授权状态',
+    credentialValid: '用户凭证是否有效',
+    valid: '有效',
+    invalid: '无效',
+    noCode: '—',
+    noUser: '—',
+    revoke: '废除授权',
+    revoking: '正在废除…',
+    revokeTitle: '废除此授权？',
+    revokeDescription: '该次授权签发的访问及刷新凭证将立即失效，客户端需重新授权。',
+    revokeFailed: '废除失败，请重试。',
+    cancel: '取消',
+    actions: '操作',
+    recordStatus: { pending: '待授权', approved: '已通过', denied: '已拒绝', expired: '已过期', revoked: '已废除' },
+    openRecords: '授权记录',
+    close: '关闭授权记录',
+    loading: '正在加载外部授权记录',
+    loadFailedTitle: '授权记录暂不可用',
+    loadFailedDescription: '外部 Grant API 尚未就绪或当前无法访问。',
+    emptyTitle: '暂无授权记录',
+    emptyDescription: '发起 MCP 或 CLI 授权后，记录会显示在这里。',
+    retry: '重新加载授权记录',
+    effectiveFrom: '生效时间',
+    expiresAt: '过期时间',
+    timeWindowTitle: 'UAT 生效规则',
+    timeWindowDescription: '配置 Tools 生效范围和 CLI 授权有效期，并保存到 PM 服务端。',
+    cliGrantTtl: 'CLI 授权有效期（小时）',
+    cliGrantTtlDescription: '新发起的 CLI 授权将在该小时数后过期；若 Tools 时间窗更早结束，则以时间窗为准。已有授权不受本次修改影响。',
+    cliGrantTtlValue: (hours: number) => `${hours} 小时`,
+    cliGrantTtlInvalid: 'CLI 授权有效期必须是 1 到 8760 小时的整数。',
+    toolsRequired: '请至少选择一个需要授权的工具。',
+    timeRequired: '请完整填写生效时间和过期时间。',
+    timeOrderInvalid: '过期时间必须晚于生效时间。',
+    timeExpired: '过期时间必须晚于当前时间。',
+    scopes: (count: number) => `${count} 个工具范围`,
+  },
+  authorization: {
+    title: '授权 PM 外部工具',
+    description: '请核对客户端、渠道、工作区、工具风险与 UAT 时间窗后再决定。',
+    loading: '正在加载授权申请',
+    invalidTitle: '授权申请无效',
+    invalidDescription: '链接缺少有效的授权申请编号，请返回 MCP 客户端重新连接，或重新运行 pm auth login。',
+    loadFailedTitle: '授权申请无法加载',
+    loadFailedDescription: '申请可能已失效、已使用，或授权服务尚未就绪。',
+    retry: '重新加载申请',
+    client: '客户端',
+    clientId: '客户端 ID',
+    channel: '渠道',
+    workspace: '工作区',
+    effectRule: '生效规则',
+    tools: '申请工具',
+    risk: '最高风险',
+    effectiveFrom: 'UAT 生效时间',
+    expiresAt: '授权过期时间',
+    authorize: '确认授权',
+    authorizing: '正在授权',
+    deny: '拒绝授权',
+    denied: '已拒绝本次授权申请。',
+    authorized: '授权记录已创建。客户端登录仍需从 MCP 客户端或 pm auth login 发起 OAuth 授权。',
+    redirecting: '授权已确认，正在返回 MCP / CLI 客户端。',
+    decisionFailed: '授权操作失败，未产生成功授权，请重试。',
+    returnToConfiguration: '返回 MCP / CLI 配置',
+    mutationWarning: '写操作会进入二次确认流程；高风险操作不会因本页授权而跳过确认。',
+  },
+  deviceAuthorization: {
+    title: '授权 PM CLI',
+    description: '请核对当前设备授权申请；确认后结果会保留在 PM 服务端，无需访问 Agent 的本地回调地址。',
+    userCode: '设备确认码',
+    requestExpiresAt: '申请有效期',
+    invalidTitle: '设备授权链接无效',
+    invalidDescription: '链接缺少有效的设备确认码，请让 Agent 重新运行 PM CLI 初始化命令。',
+    loadFailedTitle: '设备授权申请无法加载',
+    loadFailedDescription: '申请可能已过期、工作区不匹配，或授权服务暂不可用。',
+    status: {
+      approved: {
+        title: '授权完成，可返回 Agent',
+        description: 'PM CLI 已获得本次授权确认。返回 Agent 后继续执行身份校验即可。',
+      },
+      denied: {
+        title: '已拒绝本次授权',
+        description: '未向 PM CLI 授予访问权限，可以安全返回 Agent。',
+      },
+      consumed: {
+        title: '授权已完成',
+        description: 'PM CLI 已领取并保存授权结果，可以返回 Agent 继续工作。',
+      },
+      expired: {
+        title: '设备授权已过期',
+        description: '本次申请未产生授权，请让 Agent 重新运行 PM CLI 初始化命令。',
+      },
+    },
+  },
+  channel: {
+    mcp: 'MCP',
+    cli: 'CLI',
+  },
+  risk: {
+    read: '只读',
+    mutation: '写操作',
+    highImpact: '高风险写操作',
+  },
+  lifecycle: {
+    draft: '尚未实现',
+    active: '可用',
+    deprecated: '已弃用',
+  },
+  grantStatus: {
+    scheduled: '待生效',
+    active: '已生效',
+    expired: '已过期',
+    revoked: '已撤销',
+  },
+} as const

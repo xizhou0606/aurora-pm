@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "operation_governance": {
+    "frontend_resolver": "frontend/operation-capabilities.ts",
+    "tool_source_glob": "backend/routes.go",
+    "domains": [],
+    "frontend_surfaces": [],
+    "button_locations": {},
+    "tool_bindings": {},
+    "tool_not_applicable": {},
+    "tool_no_action": {},
+    "tool_decision_reasons": {}
+  },
+  "frontend_inventory": {
+    "router_file": "frontend/router.tsx",
+    "shell_catalog_file": "frontend/catalog.json",
+    "exemptions": []
+  },
+  "route_inventory": {
+    "sources": [
+      { "file": "backend/routes.go", "function": "mountThings", "receivers": { "scoped": "/api/v1" } }
+    ],
+    "public_exemptions": [],
+    "authenticated_exemptions": []
+  },
+  "permission_literal_scan": { "paths": [], "exclude_prefixes": [] },
+  "pages": [
+    {
+      "code": "pm.things", "name": "事项",
+      "copy_key": "access.pages.things",
+      "frontend_routes": ["/workspace/things"],
+      "modules": [
+        {
+          "code": "pm.things.list", "name": "事项列表",
+          "copy_key": "access.modules.things.list",
+          "actions": [
+            {
+              "code": "pm.things.list.view", "name": "查看",
+              "copy_key": "access.actions.things.list.view",
+              "routes": [{ "method": "GET", "path": "/api/v1/things" }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+export const BITABLE_COLLABORATION_COPY = {
+  unavailable: '实时协作尚未连接，当前状态不能作为只读权限依据',
+  acquiring: '正在获取单元格编辑权',
+  occupied: (name: string) => `${name} 正在编辑此单元格`,
+  leaseLost: '编辑权已失效，草稿已冻结保留；重新获取后才能提交',
+  conflict: '该单元格已被更新，草稿已冻结保留',
+  unknown: '保存结果未知，草稿已冻结保留，请先确认后再处理',
+  acquireFailed: '暂时无法获取编辑权，草稿已保留',
+  reconnecting: '实时连接中断，正在等待恢复',
+  accessRevoked: '实时访问权限已失效',
+  batchUnavailable: '批量修改需要原子获取全部单元格编辑权，当前客户端尚未接通该能力',
+  onlineRoster: (count: number) => `${count} 人在线`,
+  occupiedBy: (names: readonly string[]) => `${names.join('、')} 正在此单元格协作`,
+  cellParticipant: (name: string, editing: boolean) => `${name} · ${editing ? '正在编辑' : '已选中'}`,
+  copyDraftAndExit: '复制草稿并退出',
+  draftCopyFailed: '无法复制，请手动复制草稿后按 Esc 退出编辑',
+} as const

@@ -1,0 +1,35 @@
+{
+  "name": "@pm/collaboration-spike",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "ADR-0016 Hocuspocus/Yjs collaboration runtime foundation; not a production-ready deployment unit",
+  "scripts": {
+    "build": "bun node_modules/typescript/bin/tsc -p tsconfig.build.json",
+    "dev": "bun --hot src/index.ts",
+    "start": "bun dist/index.js",
+    "test": "bun test",
+    "typecheck": "bun node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@hocuspocus/provider": "4.6.0",
+    "@hocuspocus/server": "4.6.0",
+    "@hocuspocus/transformer": "4.6.0",
+    "@tiptap/core": "3.29.2",
+    "@tiptap/extension-image": "3.29.2",
+    "@tiptap/extension-table": "3.29.2",
+    "@tiptap/extension-task-item": "3.29.2",
+    "@tiptap/extension-task-list": "3.29.2",
+    "@tiptap/starter-kit": "3.29.2",
+    "crossws": "0.4.12",
+    "yjs": "13.6.32"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.2",
+    "@types/node": "^22.10.0",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

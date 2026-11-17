@@ -1,0 +1,28 @@
+{
+  "name": "@pm/design-review-mobile-collector",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "pm-design-review-mobile-collector": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "bun --hot src/index.ts start",
+    "build": "bun x tsup",
+    "package:macos": "bun x tsup && bun scripts/package-macos.mjs",
+    "typecheck": "bun node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@mobilewright/protocol": "0.0.53",
+    "mobilecli": "1.0.0",
+    "mobilewright": "0.0.53",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.2",
+    "@types/node": "^24.3.0",
+    "tsup": "^8.5.0",
+    "typescript": "7.0.2"
+  }
+}
